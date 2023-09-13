@@ -62,7 +62,7 @@ int main()
 			//스택의 가장위의 수가 만들어야하는 수열의 수보다 크다면 출력 불가
 			if (n > su) 
 			{
-				cout << "NO" << endl;
+				cout << "NO" << "\n";
 				result = false;
 				break;
 			}
@@ -78,7 +78,8 @@ int main()
 	{
 		for (int i = 0; i < resultV.size(); i++)
 		{
-			cout << resultV[i] << endl;
+			//endl은 메모리용량을 많이차지해서 컴파일시간늘어남 
+			cout << resultV[i] << "\n";
 		}
 	}
 
