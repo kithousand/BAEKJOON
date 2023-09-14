@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+#include <time.h>
 using namespace std;
 
 //https://www.acmicpc.net/problem/1874
@@ -10,6 +11,9 @@ using namespace std;
 
 int main()
 {
+	int TIME = 0;
+
+
 	int S, P, A, C, G, T;
 
 	int a, c, g, t;
@@ -58,11 +62,15 @@ int main()
 		{
 			result++;
 		}
-		//다시 입력받값으로 초기화하는법
+		//다시 입력받값으로 초기화하기
 		A = a;
 		C = c;
 		G = g;
 		T = t;
 	}
 	std::cout << result << "\n";
+
+
+
+
 }
