@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <stack>
 #include <algorithm>
 #include <vector>
@@ -6,12 +6,14 @@ using namespace std;
 
 //https://www.acmicpc.net/problem/1049
 
+#define SET_COUNT 6
+
 int main()
 {
 	/*
-	ÇÊ¿äÇÑ ±âÅ¸ÁÙ N
-	  ºê·£µå ¼ö M
-	  6°³ÆÐÅ°Áö °¡°Ý, ³¹°³°¡°Ý
+	í•„ìš”í•œ ê¸°íƒ€ì¤„ N
+	ë¸Œëžœë“œ ìˆ˜ M
+	6ê°œíŒ¨í‚¤ì§€ ê°€ê²©, ë‚±ê°œê°€ê²©
 	*/
 
 	int N, M;
@@ -27,50 +29,40 @@ int main()
 		}
 	}
 
+	int min_pakPrice = price[0][0]; 
+	int min_natPrice = price[0][1];  
 
-	int min_pakPrice = price[0][0]; // Ã¹ ¹øÂ° ºê·£µåÀÇ ÆÐÅ°Áö °¡°ÝÀ¸·Î ÃÊ±âÈ­
-	int min_natPrice = price[0][1];  // Ã¹ ¹øÂ° ºê·£µåÀÇ ³¹°³ °¡°ÝÀ¸·Î ÃÊ±âÈ­
-
-	for (int i = 1; i < M; i++) 
+	for (int i = 1; i < M; i++)
 	{
 		min_pakPrice = min(min_pakPrice, price[i][0]);
 		min_natPrice = min(min_natPrice, price[i][1]);
 	}
 
+	int set_total;
+	int nat_total;
+	int setnat_total;
 	
-	int total;
+	//ì„¸íŠ¸ë¡œë§Œ ì‚¬ëŠ”ê²½ìš°, ë‚±ê°œë¡œë§Œ ì‚¬ëŠ”ê²½ìš°, ì„¸íŠ¸+ë‚±ê°œë¡œì‚¬ëŠ”ê²½ìš°
 	
-	//³¹°³·Î¸¸ ±¸¸ÅÇØ¾ßÇÏ´Â°æ¿ì
-	if (N < 6)
+	//ì„¸íŠ¸ë¡œë§Œ ì‚¬ëŠ”ê²½ìš°
+	if (N % SET_COUNT != 0)
 	{
-		total = min_natPrice * N;
-		cout << total << "\n";
+		set_total = min_pakPrice* (N / SET_COUNT + 1);
 	}
-
-	//ÆÐÅ°Áö¸¦ ¹«Á¶°Ç Æ÷ÇÔÇØ¾ßÇÏ´Â°æ¿ì
-	else
+	else 
 	{
-		if (N % 6 != 0)
-		{
-			min_natPrice = min_natPrice * (N % 6);
-			if (min_pakPrice <= min_natPrice)
-			{
-				min_pakPrice = min_pakPrice * (N / 6 + 1);
-				total = min_pakPrice;
-			}
-			else 
-			{
-				min_pakPrice = min_pakPrice * (N / 6);
-				total = min_pakPrice + min_natPrice;
-			}
-			cout << total << "\n";
-		}
-		else
-		{
-			total = min_pakPrice * (N / 6);
-			cout << total << "\n";
-		}
+		set_total = min_pakPrice* (N / SET_COUNT);
 	}
+	
+	//ë‚±ê°œë¡œë§Œ ì‚¬ëŠ”ê²½ìš°
+	nat_total = min_natPrice * N;
 
+	//ì„¸íŠ¸+ë‚±ê°œë¡œ ì‚¬ëŠ”ê²½ìš°
+	setnat_total = (min_pakPrice * (N / SET_COUNT)) + (min_natPrice * (N % SET_COUNT));
+
+	int total = min({ set_total, nat_total, setnat_total });
+
+	cout << total << "\n";
+	
 	return 0;
 }
