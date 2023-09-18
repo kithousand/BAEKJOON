@@ -60,9 +60,52 @@ int main()
 	//세트+낱개로 사는경우
 	setnat_total = (min_pakPrice * (N / SET_COUNT)) + (min_natPrice * (N % SET_COUNT));
 
+	//3가지경우중에 제일 싼것을 출력하자!
 	int total = min({ set_total, nat_total, setnat_total });
 
 	cout << total << "\n";
 	
 	return 0;
 }
+
+
+//처음에 짰던 코드
+//조건을 나누는 접근이 잘못되었다
+//유연한 사고의 필요성을 깨달음
+//항상 여러방면으로 생각해보자
+/*
+int total;
+
+
+if (N < 6)
+{
+	total = min_natPrice * N;
+	cout << total << "\n";
+}
+
+else
+{
+	if (N % 6 != 0)
+	{
+		min_natPrice = min_natPrice * (N % 6);
+		if (min_pakPrice <= min_natPrice)
+		{
+			min_pakPrice = min_pakPrice * (N / 6 + 1);
+			total = min_pakPrice;
+		}
+		else
+		{
+			min_pakPrice = min_pakPrice * (N / 6);
+			total = min_pakPrice + min_natPrice;
+		}
+		cout << total << "\n";
+	}
+	else
+	{
+		total = min_pakPrice * (N / 6);
+		cout << total << "\n";
+	}
+}
+
+return 0;
+}*/
