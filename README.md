@@ -7,14 +7,14 @@
 ## 목적 🎯
 
 - 알고리즘 이해 및 학습
-- 코딩 테스트 준비
-- 일일 커밋 유지
+- 어려운 코딩테스트를 준비한다기보다 코딩하는 습관을 들이기!
+- 1일 1commit 유지하기!
 
 ## 사용 언어 및 도구 🛠
 
+- C
 - C++
-- Python
-- Visual Studio Code
+- Visual Studio 2022
 - Git
 
 # Algorithm Types in this Repository 🌳
