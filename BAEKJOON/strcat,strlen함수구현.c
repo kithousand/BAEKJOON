@@ -32,18 +32,47 @@ int my_strlen(char* pa)
 	return cnt;
 }
 
+//문자열뒤집기
+void reverse_str(char *a)
+{
+	int start = 0;
+	int end = strlen(a)-1;
+
+	while (start<end)
+	{
+		char temp;
+		temp = a[start];
+		a[start] = a[end];
+		a[end] = temp;
+		start++;
+		end--;
+	}
+
+	printf("%s", a);
+	
+}
+
 
 int main()
 {
 	int count = 0;
-	char a[80] = "안녕";
-	char b[80] = "하세요";
+	char a[80] = "ice";
+	char b[80] = "hihi";
+	//char* a = "ice";
+	//char* b = "cream";
 
-	puts(a);
-	puts(b);
+	char* dd;
+	dd = a;
+	char* bb;
+	bb = b;
 
-	my_strcat(a, b);
-	my_strlen(b);
-	printf("합쳐진 문자열 : %s\n", a);
-	printf("%s의 글자수 : %d\n",a,my_strlen(a));
+	//puts(a);
+	//puts(b);
+
+	//my_strcat(dd, bb);
+	//my_strlen(bb);
+	//printf("합쳐진 문자열 : %s\n", dd);
+	//printf("%s의 글자수 : %d\n",dd,my_strlen(dd));
+
+	reverse_str(a);
 }
